@@ -1,0 +1,11 @@
+import { spawnSync } from 'node:child_process';
+const repository = process.argv[2] || 'gibo1021-1/Ai-develop';
+if (!/^[A-Za-z0-9_.-]+(?:\/[A-Za-z0-9_.-]+)?$/.test(repository)) throw new Error('Use a repository name or owner/name');
+const parts = repository.split('/');
+const name = parts.at(-1);
+const owner = parts.length === 2 ? parts[0] : '';
+const isUserSite = owner && name.toLowerCase() === `${owner.toLowerCase()}.github.io`;
+const basePath = process.env.SITE_BASE_PATH ?? (isUserSite ? '' : `/${name}`);
+const result = spawnSync(process.execPath, ['scripts/build.mjs'], { stdio:'inherit', env:{...process.env,SITE_BASE_PATH:basePath,SITE_OUTPUT_DIR:'docs'} });
+if (result.error) throw result.error;
+process.exit(result.status ?? 1);

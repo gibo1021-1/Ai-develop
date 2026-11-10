@@ -1,0 +1,11 @@
+{
+  "name": "ai-develop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build-pages.mjs"
+  },
+  "description": "AI 디벨롭 강의, 로드맵, 무료 자료와 수강 후기를 소개하는 정적 웹사이트"
+}
