@@ -28,7 +28,7 @@ const pageVisuals = {
 };
 const pages = [
   { key:'home', path:'/', label:'홈', title:'AI 디벨롭 | AI, 아는 것에서 쓰는 것으로', description:'AI가 처음이어도 괜찮아요. 무료 전자책부터 나만의 AI 비서까지, 내 일에 바로 쓰는 AI 활용법을 함께 익혀요.', sections:['hero','reviews','topics','home-guide','home-resources','soft-closing'] },
-  { key:'classes', path:'/classes/', label:'강의 소개', title:'강의 소개 | AI 디벨롭', description:'나만의 비서 챗봇 만들기. 3주 과정 정가 290,000원 → 할인가 99,000원, Zoom 온라인 주 1회. 수업 목표와 신청 안내를 확인하세요.', intro:'직접 만들어보는 수업의 목표와 진행 방식을 확인하세요.', sections:['class','faq','paid-closing'] },
+  { key:'classes', path:'/classes/', label:'강의 소개', title:'강의 소개 | AI 디벨롭', description:'나만의 비서 챗봇 만들기. 3주 과정 정가 290,000원 → 강의 실시간 참석자 한정 약 66% 할인가 99,000원. Zoom 온라인 주 1회. 수업 목표와 신청 안내를 확인하세요.', intro:'직접 만들어보는 수업의 목표와 진행 방식을 확인하세요.', sections:['class','faq','paid-closing'] },
   { key:'roadmap', path:'/roadmap/', label:'3단계 로드맵', title:'3단계 로드맵 | AI 디벨롭', description:'AI 비서, 콘텐츠 제작, 업무 자동화. 만들고 싶은 결과와 사용 경험에 맞는 학습 방향을 찾아보세요.', intro:'AI 비서부터 콘텐츠와 업무 자동화까지, 만들고 싶은 결과에서 시작해요.', sections:['roadmap','examples','soft-closing'] },
   { key:'reviews', path:'/reviews/', label:'수강 후기', title:'수강 후기 | AI 디벨롭', description:'기존 AI 활용 강의를 함께한 분들의 후기 10건. 닉네임을 가린 수강 소감과 다음 배움에 대한 이야기를 만나보세요.', intro:'직접 실습하며 남겨주신 소감과 다음 배움에 대한 기대를 모았습니다.', sections:['reviews','soft-closing'] },
   { key:'resources', path:'/resources/', label:'무료 자료', title:'무료 전자책과 활용 자료 | AI 디벨롭', description:'ChatGPT 입문자 핵심 10문항 PDF, AI 활용법 완전초보 전자책, 인스타그램·블로그 노션 활용 자료를 이용하세요.', intro:'입문 전자책과 바로 써보는 실습 자료를 필요한 순간에 꺼내보세요.', sections:['resources','soft-closing'] },

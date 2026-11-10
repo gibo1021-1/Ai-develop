@@ -284,14 +284,22 @@ body[data-page="home"] .home-reviews-section+.topic-strip{margin-top:45px}
 @media(max-width:380px){.visual-category-grid{grid-template-columns:1fr}.visual-category-card,.visual-category-card:nth-child(4),.visual-category-card:nth-child(5){grid-column:span 1}.category-cover,.visual-category-card:nth-child(5) .category-cover{height:150px}.cover-emoji,.visual-category-card:nth-child(5) .cover-emoji{font-size:67px}.cover-label{font-size:8px;left:14px;top:11px}.cover-caption{font-size:6px;left:14px;bottom:12px}.category-card-body{padding:19px 16px 15px}.category-card-body h3{font-size:18px}.category-card-body>p{font-size:10px}.category-card-body .home-guide-link{font-size:10px}.category-card-body .home-guide-kicker{font-size:9px}.page-intro-grid{grid-template-columns:minmax(0,1fr) 92px;gap:14px}.page-intro-art{height:129px}.page-art-emoji{font-size:47px;top:27px}.page-art-orbit{width:71px;height:71px;top:13px}.page-art-label>strong{font-size:8px}.page-intro-copy h1{font-size:26px}.free-ebook-preview{width:62px;height:88px}.online-book-preview>span{font-size:26px;margin-top:10px}.online-book-preview>b{font-size:6px}.online-book-preview>small{margin-top:6px}.team-card>.team-avatar{height:112px}.team-avatar-emoji{font-size:43px}.team-card h3{font-size:15px}}
 
 /* Step 1 regular and discounted tuition. */
-.course-price{display:flex;flex-direction:column;align-items:flex-start;gap:4px;line-height:1.5}
-.course-price .price-original{display:flex;align-items:center;gap:8px;color:#737d8c;font-size:11px}
-.course-price .price-original del{font-size:14px;text-decoration-thickness:1px}
+.course-price{display:flex;flex-direction:column;align-items:flex-start;gap:9px;width:100%;min-width:0;padding:20px;border:1px solid #cbd9ff;border-radius:13px;background:linear-gradient(135deg,#f0f5ff,#fafbff);line-height:1.5}
+.course-price .price-discount{display:inline-flex;align-items:baseline;gap:5px;padding:4px 12px;border-radius:8px;background:#2457df;color:#fff;font-size:15px;font-weight:700;white-space:nowrap;line-height:1.5}
+.course-price .price-discount b{font-size:28px;font-weight:850;letter-spacing:-1px}
+.course-price .price-original{display:flex;align-items:center;gap:10px;color:#626e83;font-size:14px;font-weight:600}
+.course-price .price-original del{font-size:23px;font-weight:650;text-decoration-thickness:2px;text-decoration-color:#8090aa}
 .course-price .price-sale{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.course-price .price-sale-label{background:#eaf0ff;color:#2455d0;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700}
-.course-price .price-sale strong{font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--blue);line-height:1.4}
-.course-price .price-sale strong small{font-size:15px;font-weight:600;margin-left:3px;letter-spacing:0}
-.class-price{flex-direction:column;align-items:flex-start;gap:5px}
-.stage-price .course-price .price-sale strong{font-size:26px}
-.offer-modal-info .course-price,.dialog-info>.course-price{margin-top:9px}
+.course-price .price-sale-label{color:#2455d0;font-size:15px;font-weight:750}
+.course-price .price-sale strong{font-size:44px;font-weight:850;letter-spacing:-1.5px;color:#2457df;line-height:1.15;white-space:nowrap}
+.course-price .price-sale strong small{font-size:18px;font-weight:650;margin-left:3px;letter-spacing:0}
+.course-price .price-eligibility{width:100%;border-top:1px solid #d8e3fc;padding-top:9px;color:#344f80;font-size:13px;font-weight:700}
+.course-price .price-eligibility>span{color:#2457df;margin-right:2px}
+.class-price{flex-direction:column;align-items:flex-start;gap:6px}
+.stage-price .course-price{padding:16px 14px}
+.stage-price .course-price .price-sale strong{font-size:36px}
+.stage-price .course-price .price-original del{font-size:21px}
+.offer-modal-info .course-price,.dialog-info>.course-price{margin-top:10px}
 .closing-card .course-price{margin-top:14px}
+@media(max-width:600px){.course-price{padding:16px;gap:8px}.course-price .price-sale strong{font-size:38px}.stage-price .course-price{padding:13px 10px}.stage-price .course-price .price-discount{padding:4px 8px;font-size:12px;gap:4px}.stage-price .course-price .price-discount b{font-size:24px}.stage-price .course-price .price-sale{gap:7px}.stage-price .course-price .price-sale-label{font-size:12px}.stage-price .course-price .price-sale strong{font-size:32px}.stage-price .course-price .price-sale strong small{font-size:14px}.stage-price .course-price .price-original{font-size:12px;gap:7px}.stage-price .course-price .price-original del{font-size:19px}.stage-price .course-price .price-eligibility{font-size:11px}}
+@media(max-width:380px){.stage-price .course-price .price-sale strong{font-size:30px}.stage-price .course-price .price-original del{font-size:18px}}
