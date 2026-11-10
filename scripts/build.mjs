@@ -4,7 +4,11 @@ if (!['dist','docs'].includes(outputDir)) throw new Error('SITE_OUTPUT_DIR must 
 const rawBase = (process.env.SITE_BASE_PATH || '').trim();
 const basePath = rawBase === '/' ? '' : rawBase.replace(/\/+$/, '');
 if (basePath && (!/^\/[A-Za-z0-9._\/-]+$/.test(basePath) || basePath.split('/').some(part => part === '.' || part === '..') || basePath.includes('//'))) throw new Error('Invalid SITE_BASE_PATH');
-for (const path of ['src/layout.html', 'site/style.css', 'site/app.js', 'site/assets/chatgpt-beginner-10-questions.pdf', 'site/assets/chatgpt-beginner-cover.png']) {
+const siteOrigin = (process.env.SITE_ORIGIN || 'https://gibo1021-1.github.io').replace(/\/+$/, '');
+const originUrl = new URL(siteOrigin);
+if (originUrl.protocol !== 'https:' || originUrl.origin !== siteOrigin) throw new Error('SITE_ORIGIN must be an HTTPS origin without a path');
+const shareImageUrl = `${siteOrigin}${basePath}/assets/ai-develop-share-v1.png`;
+for (const path of ['src/layout.html', 'site/style.css', 'site/app.js', 'site/assets/chatgpt-beginner-10-questions.pdf', 'site/assets/chatgpt-beginner-cover.png', 'site/assets/ai-develop-share-v1.png']) {
   if (!(await stat(path)).size) throw new Error('Missing or empty file: ' + path);
 }
 await rm(outputDir, { recursive: true, force: true });
@@ -23,7 +27,7 @@ const pageVisuals = {
   instructors:{ emoji:'🧑‍🏫', theme:'lemon', title:'함께 익히는 AI 활용', caption:'배움이 실제 활용이 되도록', chip:'AI 디벨롭 강사진' }
 };
 const pages = [
-  { key:'home', path:'/', label:'홈', title:'AI 디벨롭 — AI를 내 일에, 한 단계씩', description:'무료 입문 자료부터 나만의 AI 비서까지. 내 목표에 맞는 AI 배움과 수강생의 이야기를 만나보세요.', sections:['hero','reviews','topics','home-guide','home-resources','soft-closing'] },
+  { key:'home', path:'/', label:'홈', title:'AI 디벨롭 | AI, 아는 것에서 쓰는 것으로', description:'AI가 처음이어도 괜찮아요. 무료 전자책부터 나만의 AI 비서까지, 내 일에 바로 쓰는 AI 활용법을 함께 익혀요.', sections:['hero','reviews','topics','home-guide','home-resources','soft-closing'] },
   { key:'classes', path:'/classes/', label:'강의 소개', title:'강의 소개 | AI 디벨롭', description:'나만의 비서 챗봇 만들기. 3주·99,000원, Zoom 온라인 주 1회. 수업 목표와 신청 안내를 확인하세요.', intro:'직접 만들어보는 수업의 목표와 진행 방식을 확인하세요.', sections:['class','faq','paid-closing'] },
   { key:'roadmap', path:'/roadmap/', label:'3단계 로드맵', title:'3단계 로드맵 | AI 디벨롭', description:'AI 비서, 콘텐츠 제작, 업무 자동화. 만들고 싶은 결과와 사용 경험에 맞는 학습 방향을 찾아보세요.', intro:'AI 비서부터 콘텐츠와 업무 자동화까지, 만들고 싶은 결과에서 시작해요.', sections:['roadmap','examples','soft-closing'] },
   { key:'reviews', path:'/reviews/', label:'수강 후기', title:'수강 후기 | AI 디벨롭', description:'기존 AI 활용 강의를 함께한 분들의 후기 10건. 닉네임을 가린 수강 소감과 다음 배움에 대한 이야기를 만나보세요.', intro:'직접 실습하며 남겨주신 소감과 다음 배움에 대한 기대를 모았습니다.', sections:['reviews','soft-closing'] },
@@ -52,7 +56,7 @@ for (const page of pages) {
   }
   const visual = pageVisuals[page.key];
   const intro = page.key === 'home' ? '' : `<div class="section-wrap page-intro"><nav class="breadcrumbs" aria-label="현재 위치"><a href="/">홈</a><span aria-hidden="true">/</span><span aria-current="page">${escape(page.label)}</span></nav><div class="page-intro-grid"><div class="page-intro-copy"><span class="section-kicker">AI DEVELOP / ${page.key.toUpperCase()}</span><h1>${escape(page.label)}</h1><p>${escape(page.intro)}</p></div><div class="page-intro-art cover-${visual.theme}" aria-hidden="true"><span class="page-art-orbit"></span><span class="page-art-chip">${escape(visual.chip)}</span><span class="page-art-emoji">${visual.emoji}</span><div class="page-art-label"><strong>${escape(visual.title)}</strong><span>${escape(visual.caption)}</span></div></div></div></div>`;
-  let html = layout.replaceAll('{{TITLE}}', escape(page.title)).replaceAll('{{DESCRIPTION}}', escape(page.description)).replaceAll('{{PAGE_KEY}}', page.key).replaceAll('{{BASE_PATH}}', escape(basePath)).replace('{{CONTENT}}', intro + '\n' + pieces.join('\n'));
+  let html = layout.replaceAll('{{TITLE}}', escape(page.title)).replaceAll('{{DESCRIPTION}}', escape(page.description)).replaceAll('{{PAGE_KEY}}', page.key).replaceAll('{{BASE_PATH}}', escape(basePath)).replaceAll('{{PAGE_URL}}', escape(`${siteOrigin}${basePath}${page.path}`)).replaceAll('{{SHARE_IMAGE_URL}}', escape(shareImageUrl)).replace('{{CONTENT}}', intro + '\n' + pieces.join('\n'));
   html = routeLinks(html);
   if (page.key !== 'home') {
     html = html.replace(`<a href="${page.path}">`, `<a href="${page.path}" aria-current="page">`);

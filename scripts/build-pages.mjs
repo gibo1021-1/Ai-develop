@@ -6,6 +6,7 @@ const name = parts.at(-1);
 const owner = parts.length === 2 ? parts[0] : '';
 const isUserSite = owner && name.toLowerCase() === `${owner.toLowerCase()}.github.io`;
 const basePath = process.env.SITE_BASE_PATH ?? (isUserSite ? '' : `/${name}`);
-const result = spawnSync(process.execPath, ['scripts/build.mjs'], { stdio:'inherit', env:{...process.env,SITE_BASE_PATH:basePath,SITE_OUTPUT_DIR:'docs'} });
+const siteOrigin = process.env.SITE_ORIGIN || (owner ? `https://${owner.toLowerCase()}.github.io` : 'https://gibo1021-1.github.io');
+const result = spawnSync(process.execPath, ['scripts/build.mjs'], { stdio:'inherit', env:{...process.env,SITE_ORIGIN:siteOrigin,SITE_BASE_PATH:basePath,SITE_OUTPUT_DIR:'docs'} });
 if (result.error) throw result.error;
 process.exit(result.status ?? 1);

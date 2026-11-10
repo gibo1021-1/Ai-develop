@@ -32,6 +32,7 @@ python -m http.server 4173 --directory dist
 ## 파일 구성
 
 - `src/layout.html`: 공통 메뉴, 푸터와 안내 창
+- `src/share-image.html`: 1200×630 링크 미리보기 이미지의 디자인 원본
 - `src/sections/`: 페이지별 본문
 - `site/`: CSS, JavaScript, 이미지, 글꼴과 무료 PDF
 - `scripts/build.mjs`: 정적 페이지 빌드
@@ -39,6 +40,14 @@ python -m http.server 4173 --directory dist
 - `docs/`: GitHub Pages에 게시하는 파일
 
 홈, 강의(`/classes/`), 로드맵(`/roadmap/`), 후기(`/reviews/`), 무료 자료(`/resources/`), 강사진(`/instructors/`)의 여섯 페이지로 구성했습니다. 후기 자동 넘김은 3초이며, 마우스·키보드·일시정지·모바일 좌우 밀기를 지원합니다.
+
+## 카카오톡과 SNS 링크 미리보기
+
+모든 페이지에 대표 이미지, 페이지별 제목·설명과 절대 주소를 정적 HTML로 포함합니다. 대표 이미지는 `site/assets/ai-develop-share-v1.png`이며, `src/share-image.html`을 글꼴 로딩 완료 후 1200×630 크기로 캡처한 PNG입니다. 이미지를 바꾸면 파일명과 `scripts/build.mjs`의 이미지 경로도 함께 갱신합니다.
+
+GitHub Pages용 빌드는 저장소 소유자와 이름으로 공유 주소를 정합니다. 자체 도메인을 연결한 경우 `SITE_ORIGIN=https://example.com`으로 빌드하고, 도메인 루트에서 서비스하면 `SITE_BASE_PATH=/`도 지정하세요.
+
+카카오톡에서 이전 미리보기가 계속 보이면 [카카오톡 URL 메타정보 관리](https://developers.kakao.com/tool/debugger/sharing)에서 사이트 주소의 공유 정보를 초기화한 후 다시 공유합니다. 카카오 계정 로그인이 필요할 수 있습니다.
 
 ## 수강 및 자료 안내
 
